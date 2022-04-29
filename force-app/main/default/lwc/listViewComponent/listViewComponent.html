@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Available Email Templates" icon-name="custom:custom105">
+        <div class="slds-m-left_xx-large">
+            <template if:true={emailTemplateList}>
+                <c-custom-toast auto-close-time="5000"></c-custom-toast>
+                <div class="slds-size_1-of-2"> 
+                    <div class="slds-m-around_medium">
+                        <lightning-combobox name="Email Template" label="Select Email Template" value={selectedEmailTemplate} placeholder=" Select Email Template"
+                        options={emailTemplateList} onchange={handleEmailTemplateChange} >
+                        </lightning-combobox>
+                    </div>
+                    <div class="slds-m-around_medium">
+                        <lightning-input type="checkbox" label="I confirm that I have User Email Opt-in to send this email." value={selectedCheckBox} onchange={handleSendwithSalesUser} ></lightning-input>
+                    </div>  
+                    <template if:true={isLoading}>
+                        <div class="slds-p-around_x-large">
+                            <lightning-spinner alternative-text="Loading" size="large" variant="brand"></lightning-spinner>
+                        </div>
+                    </template>
+                    
+                </div>
+                <div class="slds-m-around_medium">
+                    <lightning-button variant="brand" label="Send Email"  onclick={sendEmailHandler} class="slds-m-left_x-small">
+                    </lightning-button>
+                    <lightning-button variant="brand" label="Cancel" onclick={callBackHandler} class="slds-m-left_x-small"></lightning-button>
+                </div>
+       
+            </template>
+
+        </div>
+    </lightning-card>
+
+</template>
