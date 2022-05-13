@@ -22,7 +22,7 @@ node {
         // when running in multi-branch job, one must issue this command
         checkout scm
     }
-withEnv(["HOME=${env.WORKSPACE}"]) {
+
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
 	    
         stage('Deploye Code') {
@@ -46,6 +46,5 @@ withEnv(["HOME=${env.WORKSPACE}"]) {
             println('Hello from a Job DSL script!')
             println(rmsg)
         }
-    }
     }
 }
